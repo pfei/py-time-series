@@ -1,0 +1,60 @@
+# --- General Python ---
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+.Python
+build/
+dist/
+*.egg-info/
+.env   # Local environment variables (sensitive info, API keys)
+.venv/ # Standard virtual environment directory
+venv/  # Common virtual environment directory
+env/   # Another common virtual environment directory
+*.log  # Log files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Operating System Files ---
+.DS_Store # macOS system files
+Thumbs.db # Windows thumbnail cache
+
+# --- Jupyter Notebook Specific ---
+.ipynb_checkpoints/ # Jupyter's automatic checkpoints
+*.ipynb_checkpoints # More specific for some setups
+# Optionally, if you want to exclude notebooks (e.g., if they generate large outputs)
+# For a portfolio, you usually WANT your notebooks, so keep this commented out unless needed:
+# *.ipynb
+
+# --- VS Code Specific (Excluding essential workspace settings) ---
+.vscode/*.suo     # VS Code workspace storage file (user-specific)
+.vscode/*.user    # VS Code user-specific settings
+.vscode/*.history # VS Code history files
+# Keep .vscode/settings.json and .vscode/launch.json if they are shared configurations
+
+# --- Testing and Coverage ---
+.pytest_cache/ # Pytest cache directory
+.coverage      # Coverage.py results
+htmlcov/       # Coverage.py HTML reports
+
+# --- Data Science Specific ---
+# Data files:
+# Raw data is often too large for Git. Keep it out unless it's a very small, essential dataset.
+data/raw/
+# Processed data: similar to raw, ignore if large.
+data/processed/
+# Trained models: typically very large, always ignore.
+models/
+
+# Visualization outputs (if you save plots as files):
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.pdf
+
+# Cache directories for various libraries (e.g., for datasets, models)
+.cache/
+.feather/
+.parquet/

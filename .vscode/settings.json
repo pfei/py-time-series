@@ -1,0 +1,68 @@
+{
+  // --- Python Interpreter Configuration ---
+  // Point directly to the virtual environment created by mkvirtualenv in $HOME/venvs
+  // This ensures VS Code uses the correct Python interpreter for your project.
+  "python.defaultInterpreterPath": "${env:HOME}/venvs/py-time-series/bin/python",
+
+  // --- Editor Formatting and Code Actions ---
+  // Automatically format code on save.
+  "editor.formatOnSave": true,
+  // Configure specific code actions to run on save.
+  // "source.organizeImports" will sort and remove unused imports.
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+
+  // --- Python Specific Settings (overrides for Python files) ---
+  // Apply these settings specifically when editing Python files.
+  "[python]": {
+    // Set Black as the default formatter for Python files.
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+
+  // --- Python Linting with Mypy and Dmypy ---
+  // Enable linting for Python files.
+  "python.linting.enabled": true,
+  // Enable Mypy as the linter.
+  "python.linting.mypyEnabled": true,
+  // Arguments passed to Mypy.
+  // "--config-file": Specifies your mypy.ini for configuration.
+  // "--command", "dmypy run --": Instructs VS Code to use dmypy (the Mypy daemon)
+  //   for faster, incremental type checking.
+  "python.linting.mypyArgs": [
+    "--config-file",
+    "${workspaceFolder}/mypy.ini",
+    "--command",
+    "dmypy run --"
+  ],
+
+  // --- Python Code Formatting Provider ---
+  // Explicitly set Black as the Python formatting provider.
+  // This is redundant if you've set it in "[python]" section, but good for clarity.
+  "python.formatting.provider": "black",
+
+  // --- Python Testing with Pytest ---
+  // Enable VS Code's testing features for Pytest.
+  "python.testing.pytestEnabled": true,
+  // You can add more pytest arguments here if needed, e.g., to discover tests:
+  // "python.testing.pytestArgs": [
+  //     "tests"
+  // ],
+
+  // --- Pylance (Language Server) Settings ---
+  // Set the type checking mode for Pylance (Microsoft's language server).
+  // "strict" ensures comprehensive type checking, aligning with your mypy.ini.
+  "python.analysis.typeCheckingMode": "strict",
+  // Allows you to override the diagnostic severity (e.g., warning to error)
+  // for specific Pylance diagnostics if you need finer control.
+  "python.analysis.diagnosticSeverityOverrides": {
+    // Example: "reportMissingImports": "warning"
+  },
+
+  // --- Mypy Extension Specific Settings (if you have the dedicated Mypy extension) ---
+  // This setting ensures the dedicated Mypy extension (if installed) uses the Python
+  // interpreter from your active virtual environment.
+  "mypy.runUsingActiveInterpreter": true
+  // Typically, you don't need to specify "mypy.dmypyExecutable" or "mypy.executable"
+  // if "python.linting.mypyArgs" is configured to use dmypy and "runUsingActiveInterpreter" is true.
+}
