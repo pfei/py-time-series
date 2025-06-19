@@ -57,6 +57,8 @@
   // for specific Pylance diagnostics if you need finer control.
   "python.analysis.diagnosticSeverityOverrides": {
     // Example: "reportMissingImports": "warning"
+    "reportUnknownMemberType": "none",
+    "reportUnknownArgumentType": "none"
   },
 
   // --- Mypy Extension Specific Settings (if you have the dedicated Mypy extension) ---
