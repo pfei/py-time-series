@@ -1,19 +1,14 @@
-from typing import cast
-
 import matplotlib.pyplot as plt
 import pandas as pd
 
 # --- File Path Configuration ---
-json_file_path: str = "data/raw/jj_data.json"
+json_file_path = "data/raw/jj_data.json"
 
 # --- Data Loading and Initial Inspection ---
 # Load the JSON file into a pandas DataFrame.
 # The explicit typ='frame' and type: ignore are used to help type checkers
 # like MyPy and Pylance with complex pandas DataFrame inference.
-df_jj: pd.DataFrame = cast(
-    pd.DataFrame,
-    pd.read_json(json_file_path, typ="frame"),  # type: ignore
-)
+df_jj = pd.read_json(json_file_path, typ="frame")
 
 print("--- Initial DataFrame Head ---")
 print(df_jj.head())
@@ -37,13 +32,12 @@ df_jj["Date"] = pd.PeriodIndex(df_jj["Date"], freq="Q").to_timestamp()
 # The 'Value' column will be extracted into a pandas Series.
 # The type: ignore is kept here if type checkers like MyPy/Pylance struggle with
 # inferring the exact type of the Series after chaining set_index and column selection.
-jj_series: "pd.Series[float]" = df_jj.set_index("Date")["Value"]  # type: ignore
+jj_series = df_jj.set_index("Date")["Value"]
 
 print("\n--- Pandas Series with DatetimeIndex (Head) ---")
 print(jj_series.head())
 print("\n--- Pandas Series Index ---")
-# # noqa comments are used to suppress specific Pylance warnings on this line if they appear.
-print(jj_series.index)  # noqa: reportUnknownMemberType, reportUnknownArgumentType
+print(jj_series.index)
 
 # --- Time Series Plotting (Equivalent to R's tsplot) ---
 
